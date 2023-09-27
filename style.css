@@ -1,0 +1,152 @@
+main {
+  width: 100%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.FINPUTS {
+  /* width: 30vw; */
+  min-width: 25vw;
+  padding-top: 73px;
+}
+
+.FRESULTS {
+  width: 50%;
+  max-width: 30vw;
+  min-width: 30vw;
+  display: flex;
+  line-height: 1.5;
+  padding-top: 2px;
+}
+
+.Totals {
+  display: flex;
+  width: 25%;
+}
+
+.lsteel,
+.lorb,
+.lstone,
+.estone,
+.eorb,
+.esteel,
+.rsteel,
+.rorb,
+.rstone,
+.usteel,
+.uorb,
+.ustone,
+.dsteel,
+.copper,
+.glits {
+  height: 40px;
+  display: flex;
+  margin: 8px;
+}
+
+.Epic,
+.UC,
+.Rare,
+.Legend {
+  line-height: 8;
+}
+
+img {
+  border-radius: 5px;
+}
+
+.fbtn {
+  position: static;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Acquired>p {
+  text-decoration: underline;
+  -webkit-text-decoration: slateblue solid underline;
+  text-decoration: slateblue solid underline;
+  -webkit-text-underline-position: under;
+  text-underline-position: under;
+}
+
+.Needs>p {
+  text-decoration: underline;
+  -webkit-text-decoration: red solid underline;
+  text-decoration: red solid underline;
+  -webkit-text-underline-position: under;
+  text-underline-position: under;
+  font-weight: 400;
+}
+
+@media (min-width: 578px) {
+  .btn-group {
+    padding-top: 20px;
+    padding-left: 110px;
+    justify-content: space-between;
+  }
+}
+
+.acq,
+.nds {
+  width: 30px;
+  display: inline-block;
+  position: relative;
+}
+
+
+
+.form-range {
+  padding: 15px;
+  max-width: 800px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.resources-result {
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+}
+
+#result,
+#result1,
+#result2 {
+  padding: 10px;
+  margin-top: 4px;
+}
+
+.socmed {
+  display: inline-block;
+}
+
+svg {
+  display: flex;
+  height: 20px;
+  width: 20px;
+  margin-left: 10px;
+  align-items: center;
+}
+
+.icons>li>a {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+#result,
+#result1,
+#result2 {
+  background-color: rgba(56, 56, 55, 0.114);
+  width: 250px;
+  height: 44px;
+  border-radius: 5px;
+}
+
+.resources-result > p {
+  font-size: 10px;
+}
+
+#toggleds {
+  display: none;
+}

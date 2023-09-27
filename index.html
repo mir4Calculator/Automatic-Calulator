@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous" />
+  <link type="text/css" rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+  <style>
+    .navbar-brand {
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+  <title>Mir4 Calculator</title>
+</head>
+<body>
+  <header>
+    <!-- As a link -->
+    <nav class="navbar bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Mir4 Calculator Free(Open BETA!)</a>
+      </div>
+    </nav>
+
+    <!-- As a heading -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://www.youtube.com/channel/UCCdDv47jQ5-yNImjvBt-V_g target=" target="_blank">Watch Tutorial HERE!</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+         <select class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+        id="imageToggleDropdown" onchange="toggleImages()">
+        <option class="dropdown-item" value="set1">Weapon</option>
+        <option class="dropdown-item" value="set2">Armor</option>
+        <option class="dropdown-item" value="set3">Necklace</option>
+      </select>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li id="mdropdown" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Material
+              </a>
+              <ul id="mdropdownMenu" class="dropdown-menu">
+                <li>
+                  <a value="enabled" class="dropdown-item" href="#">Craft Legendary Equipment</a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider" />
+                </li>
+                <li>
+                  <a value="disabled" class="dropdown-item" href="#">Craft Epic Equipment</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+          <div class="dropdown">
+            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Reach me here!
+            </a>
+    
+            <ul class="dropdown-menu icons">
+              <li>
+                <a class="dropdown-item" href="https://www.facebook.com/arcel.bot.1" target="_blank">
+                <svg viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="512" height="512">
+                  <path
+                    d="M211.9 197.4h-36.7v59.9h36.7V433.1h70.5V256.5h49.2l5.2-59.1h-54.4c0 0 0-22.1 0-33.7 0-13.9 2.8-19.5 16.3-19.5 10.9 0 38.2 0 38.2 0V82.9c0 0-40.2 0-48.8 0 -52.5 0-76.1 23.1-76.1 67.3C211.9 188.8 211.9 197.4 211.9 197.4z">
+                  </path>
+                </svg>
+                Facebook</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="https://www.instagram.com/not_arcel/" target="_blank">
+                <svg viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="512" height="512">
+                  <path
+                    d="M256 109.3c47.8 0 53.4 0.2 72.3 1 17.4 0.8 26.9 3.7 33.2 6.2 8.4 3.2 14.3 7.1 20.6 13.4 6.3 6.3 10.1 12.2 13.4 20.6 2.5 6.3 5.4 15.8 6.2 33.2 0.9 18.9 1 24.5 1 72.3s-0.2 53.4-1 72.3c-0.8 17.4-3.7 26.9-6.2 33.2 -3.2 8.4-7.1 14.3-13.4 20.6 -6.3 6.3-12.2 10.1-20.6 13.4 -6.3 2.5-15.8 5.4-33.2 6.2 -18.9 0.9-24.5 1-72.3 1s-53.4-0.2-72.3-1c-17.4-0.8-26.9-3.7-33.2-6.2 -8.4-3.2-14.3-7.1-20.6-13.4 -6.3-6.3-10.1-12.2-13.4-20.6 -2.5-6.3-5.4-15.8-6.2-33.2 -0.9-18.9-1-24.5-1-72.3s0.2-53.4 1-72.3c0.8-17.4 3.7-26.9 6.2-33.2 3.2-8.4 7.1-14.3 13.4-20.6 6.3-6.3 12.2-10.1 20.6-13.4 6.3-2.5 15.8-5.4 33.2-6.2C202.6 109.5 208.2 109.3 256 109.3M256 77.1c-48.6 0-54.7 0.2-73.8 1.1 -19 0.9-32.1 3.9-43.4 8.3 -11.8 4.6-21.7 10.7-31.7 20.6 -9.9 9.9-16.1 19.9-20.6 31.7 -4.4 11.4-7.4 24.4-8.3 43.4 -0.9 19.1-1.1 25.2-1.1 73.8 0 48.6 0.2 54.7 1.1 73.8 0.9 19 3.9 32.1 8.3 43.4 4.6 11.8 10.7 21.7 20.6 31.7 9.9 9.9 19.9 16.1 31.7 20.6 11.4 4.4 24.4 7.4 43.4 8.3 19.1 0.9 25.2 1.1 73.8 1.1s54.7-0.2 73.8-1.1c19-0.9 32.1-3.9 43.4-8.3 11.8-4.6 21.7-10.7 31.7-20.6 9.9-9.9 16.1-19.9 20.6-31.7 4.4-11.4 7.4-24.4 8.3-43.4 0.9-19.1 1.1-25.2 1.1-73.8s-0.2-54.7-1.1-73.8c-0.9-19-3.9-32.1-8.3-43.4 -4.6-11.8-10.7-21.7-20.6-31.7 -9.9-9.9-19.9-16.1-31.7-20.6 -11.4-4.4-24.4-7.4-43.4-8.3C310.7 77.3 304.6 77.1 256 77.1L256 77.1z">
+                  </path>
+                  <path
+                    d="M256 164.1c-50.7 0-91.9 41.1-91.9 91.9s41.1 91.9 91.9 91.9 91.9-41.1 91.9-91.9S306.7 164.1 256 164.1zM256 315.6c-32.9 0-59.6-26.7-59.6-59.6s26.7-59.6 59.6-59.6 59.6 26.7 59.6 59.6S288.9 315.6 256 315.6z">
+                  </path>
+                  <circle cx="351.5" cy="160.5" r="21.5"></circle>
+                </svg>
+                Instagram</a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="#" target="_blank">
+                <svg viewbox="0 0 512 512" preserveAspectRatio="xMidYMid meet" width="512" height="512">
+                  <path
+                    d="M419.6 168.6c-11.7 5.2-24.2 8.7-37.4 10.2 13.4-8.1 23.8-20.8 28.6-36 -12.6 7.5-26.5 12.9-41.3 15.8 -11.9-12.6-28.8-20.6-47.5-20.6 -42 0-72.9 39.2-63.4 79.9 -54.1-2.7-102.1-28.6-134.2-68 -17 29.2-8.8 67.5 20.1 86.9 -10.7-0.3-20.7-3.3-29.5-8.1 -0.7 30.2 20.9 58.4 52.2 64.6 -9.2 2.5-19.2 3.1-29.4 1.1 8.3 25.9 32.3 44.7 60.8 45.2 -27.4 21.4-61.8 31-96.4 27 28.8 18.5 63 29.2 99.8 29.2 120.8 0 189.1-102.1 185-193.6C399.9 193.1 410.9 181.7 419.6 168.6z">
+                  </path>
+                </svg>
+                X</a>
+              </li>
+            </ul>
+          </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- Split dropend button -->
+    <div class="btn-group dropdown">
+      <!-- <button type="button" class="btn btn-secondary">
+            Equipment Type
+          </button>
+          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropend</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Weapon</a></li>
+            <li><a class="dropdown-item" href="#">Armor</a></li>
+            <li><a class="dropdown-item" href="#">Necklace</a></li>
+          </ul> -->
+      <select class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"
+        id="dropdownSet">
+        <option class="dropdown-item" value="set1">rare to epic</option>
+        <option class="dropdown-item" value="set2">rare to legend</option>
+        <option class="dropdown-item" value="set3">epic to legend</option>
+      </select>
+     
+    </div>
+    <div class="container image-container">
+      <div class="row">
+        <div class="FINPUTS col-sm-12 col-md-6">
+          <div class="Legend col-xs-2">
+            <div class="lsteel">
+              <img class="toggle-image set1" src="./ls.png" />
+              <img class="toggle-image set2" src="./ls.png" />
+              <img class="toggle-image set3" src="./pl.png" />
+              <label for="input13_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input13_1" placeholder="Bind" max="100" maxlength="3"
+                size="5" />
+              <label for="input23_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input23_1" placeholder="Tradable" max="100"
+                maxlength="3" size="5" />
+            </div>
+            <div class="lorb">
+              <img class="toggle-image set1" src="./lorb.png" />
+              <img class="toggle-image set2" src="./ql.png" />
+              <img class="toggle-image set3" src="./il.png" />
+              <label for="input13_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input13_2" placeholder="Bind" max="100" maxlength="3"
+                size="5" />
+              <label for="input23_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input23_2" placeholder="Tradable" max="100"
+                maxlength="3" size="5" />
+            </div>
+            <div class="lstone">
+              <img class="toggle-image set1" src="./lst.png" />
+              <img class="toggle-image set2" src="./el.png" />
+              <img class="toggle-image set3" src="./al.png" />
+              <label for="input13_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input13_3" placeholder="Bind" max="100" maxlength="3"
+                size="5" />
+              <label for="input23_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input23_3" placeholder="Tradable" max="100"
+                maxlength="3" size="5" />
+            </div>
+          </div>
+          <div class="Epic col-xs-2">
+            <div class="esteel">
+              <img class="toggle-image set1" src="./es.png" />
+              <img class="toggle-image set2" src="./es.png" />
+              <img class="toggle-image set3" src="./pe.png" />
+              <label for="input12_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input12_1" placeholder="Bind" max="100" maxlength="3"
+                size="5" />
+              <label for="input22_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input22_1" placeholder="Tradable" max="100"
+                maxlength="3" size="5" />
+            </div>
+            <div class="eorb">
+              <img class="toggle-image set1" src="./eorb.png" />
+              <img class="toggle-image set2" src="./qe.png" />
+              <img class="toggle-image set3" src="./ie.png" />
+              <label for="input12_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input12_2" placeholder="Bind" max="100" maxlength="3"
+                size="5" />
+              <label for="input22_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input22_2" placeholder="Tradable" max="100"
+                maxlength="3" size="5" />
+            </div>
+            <div class="estone">
+              <img class="toggle-image set1" src="./est.png" />
+              <img class="toggle-image set2" src="./ee.png" />
+              <img class="toggle-image set3" src="./ae.png" />
+              <label for="input12_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input12_3" placeholder="Bind" max="100" maxlength="3"
+                size="5" />
+              <label for="input22_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input22_3" placeholder="Tradable" max="100"
+                maxlength="3" size="5" />
+            </div>
+          </div>
+          <div class="Rare col-xs-2">
+            <div class="rsteel">
+              <img class="toggle-image set1" src="./sr.png" />
+              <img class="toggle-image set2" src="./sr.png" />
+              <img class="toggle-image set3" src="./pr.png" />
+              <label for="input1_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input1_1" placeholder="Bind" max="1000" maxlength="4"
+                size="5" />
+              <label for="input2_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input2_1" placeholder="Tradable" max="1000"
+                maxlength="4" size="5" />
+            </div>
+            <div class="rorb">
+              <img class="toggle-image set1" src="./orbr.png" />
+              <img class="toggle-image set2" src="./qr.png" />
+              <img class="toggle-image set3" src="./ir.png" />
+              <label for="input1_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input1_2" placeholder="Bind" max="1000" maxlength="4"
+                size="5" />
+              <label for="input2_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input2_2" placeholder="Tradable" max="1000"
+                maxlength="4" size="5" />
+            </div>
+            <div class="rstone">
+              <img class="toggle-image set1" src="./str.png" />
+              <img class="toggle-image set2" src="./er.png" />
+              <img class="toggle-image set3" src="./ar.png" />
+              <label for="input1_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input1_3" placeholder="Bind" max="1000" maxlength="4"
+                size="5" />
+              <label for="input2_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input2_3" placeholder="Tradable" max="1000"
+                maxlength="4" size="5" />
+            </div>
+          </div>
+          <div class="UC col-xs-2">
+            <div class="usteel">
+              <img class="toggle-image set1" src="./su.png" />
+              <img class="toggle-image set2" src="./su.png" />
+              <img class="toggle-image set3" src="./pu.png" />
+              <label for="input11_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input11_1" placeholder="Bind" max="10000"
+                maxlength="5" size="5" />
+              <label for="input21_1"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input21_1" placeholder="Tradable" max="10000"
+                maxlength="5" size="5" />
+            </div>
+            <div class="uorb">
+              <img class="toggle-image set1" src="./orbu.png" />
+              <img class="toggle-image set2" src="./qu.png" />
+              <img class="toggle-image set3" src="./iu.png" />
+              <label for="input11_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input11_2" placeholder="Bind" max="10000"
+                maxlength="5" size="5" />
+              <label for="input21_2"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input21_2" placeholder="Tradable" max="10000"
+                maxlength="5" size="5" />
+            </div>
+            <div class="ustone">
+              <img class="toggle-image set1" src="./stu.png" />
+              <img class="toggle-image set2" src="./eu.png" />
+              <img class="toggle-image set3" src="./au.png" />
+              <label for="input11_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input11_3" placeholder="Bind" max="10000"
+                maxlength="5" size="5" />
+              <label for="input21_3"></label>
+              <input inputmode="numeric" class="form-control input-sm" type="text" id="input21_3" placeholder="Tradable" max="10000"
+                maxlength="5" size="5" />
+            </div>
+          </div>
+        </div>
+        <div class="FRESULTS col-sm-12 col-md-6 order-sm-2">
+          <div class="Acquired">
+            <h2>Materials Acquired</h2>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./ls.png" />
+              <img class="acq category-img toggle-image set2" src="./ls.png" />
+              <img class="acq category-img toggle-image set3" src="./pl.png" />
+              <span id="divisionResultL_1"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./lorb.png" />
+              <img class="acq category-img toggle-image set2" src="./ql.png" />
+              <img class="acq category-img toggle-image set3" src="./il.png" />
+              <span id="divisionResultL_2"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./lst.png" />
+              <img class="acq category-img toggle-image set2" src="./el.png" />
+              <img class="acq category-img toggle-image set3" src="./al.png" />
+              <span id="divisionResultL_3"></span>
+            </p>
+            <p>
+              <img class="acq toggled category-img toggle-image set1" src="./ls.png" />
+              <img class="acq toggled category-img toggle-image set2" src="./ls.png" />
+              <img class="acq toggled category-img toggle-image set3" src="./pl.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set1" src="./es.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set2" src="./es.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set3" src="./pe.png" />
+              <span id="divisionResultE_1"></span>
+            </p>
+            <p>
+              <img class="acq toggled toggle-image set1" src="./lorb.png" />
+              <img class="acq toggled toggle-image set2" src="./ql.png" />
+              <img class="acq toggled toggle-image set3" src="./il.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set1" src="./eorb.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set2" src="./qe.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set3" src="./ie.png" />
+              <span id="divisionResultE_2"></span>
+            </p>
+            <p>
+              <img class="acq toggled category-img toggle-image set1" src="./lst.png" />
+              <img class="acq toggled category-img toggle-image set2" src="./el.png" />
+              <img class="acq toggled category-img toggle-image set3" src="./al.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set1" src="./est.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set2" src="./ee.png" />
+              <img id="toggleds" class="acq toggleds category-img toggle-image set3" src="./ae.png" />
+              <span id="divisionResultE_3"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./es.png" />
+              <img class="acq category-img toggle-image set2" src="./es.png" />
+              <img class="acq category-img toggle-image set3" src="./pe.png" />
+              <span id="divisionResultR_1"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./eorb.png" />
+              <img class="acq category-img toggle-image set2" src="./qe.png" />
+              <img class="acq category-img toggle-image set3" src="./ie.png" />
+              <span id="divisionResultR_2"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./est.png" />
+              <img class="acq category-img toggle-image set2" src="./ee.png" />
+              <img class="acq category-img toggle-image set3" src="./ae.png" />
+              <span id="divisionResultR_3"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./sr.png" />
+              <img class="acq category-img toggle-image set2" src="./sr.png" />
+              <img class="acq category-img toggle-image set3" src="./pr.png" />
+              <span id="divisionResultU_1"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./orbr.png" />
+              <img class="acq category-img toggle-image set2" src="./qr.png" />
+              <img class="acq category-img toggle-image set3" src="./ir.png" />
+              <span id="divisionResultU_2"></span>
+            </p>
+            <p>
+              <img class="acq category-img toggle-image set1" src="./str.png" />
+              <img class="acq category-img toggle-image set2" src="./er.png" />
+              <img class="acq category-img toggle-image set3" src="./ar.png" />
+              <span id="divisionResultU_3"></span>
+            </p>
+          </div>
+          <div class="Needs">
+            <h2>Materials Needed</h2>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./ls.png" />
+              <img class="nds category-img toggle-image set2" src="./ls.png" />
+              <img class="nds category-img toggle-image set3" src="./pl.png" />
+              <span id="differenceL_1"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./lorb.png" />
+              <img class="nds category-img toggle-image set2" src="./ql.png" />
+              <img class="nds category-img toggle-image set3" src="./il.png" />
+              <span id="differenceL_2"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./lst.png" />
+              <img class="nds category-img toggle-image set2" src="./el.png" />
+              <img class="nds category-img toggle-image set3" src="./al.png" />
+              <span id="differenceL_3"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./es.png" />
+              <img class="nds category-img toggle-image set2" src="./es.png" />
+              <img class="nds category-img toggle-image set3" src="./pe.png" />
+              <span id="differenceE_1"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./eorb.png" />
+              <img class="nds category-img toggle-image set2" src="./qe.png" />
+              <img class="nds category-img toggle-image set3" src="./ie.png" />
+              <span id="differenceE_2"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./est.png" />
+              <img class="nds category-img toggle-image set2" src="./ee.png" />
+              <img class="nds category-img toggle-image set3" src="./ae.png" />
+              <span id="differenceE_3"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./sr.png" />
+              <img class="nds category-img toggle-image set2" src="./sr.png" />
+              <img class="nds category-img toggle-image set3" src="./pr.png" />
+              <span id="differenceR_1"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./orbr.png" />
+              <img class="nds category-img toggle-image set2" src="./qr.png" />
+              <img class="nds category-img toggle-image set3" src="./ir.png" />
+              <span id="differenceR_2"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./str.png" />
+              <img class="nds category-img toggle-image set2" src="./er.png" />
+              <img class="nds category-img toggle-image set3" src="./ar.png" />
+              <span id="differenceR_3"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./su.png" />
+              <img class="nds category-img toggle-image set2" src="./su.png" />
+              <img class="nds category-img toggle-image set3" src="./pu.png" />
+              <span id="differenceU_1"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./orbu.png" />
+              <img class="nds category-img toggle-image set2" src="./qu.png" />
+              <img class="nds category-img toggle-image set3" src="./iu.png" />
+              <span id="differenceU_2"></span>
+            </p>
+            <p>
+              <img class="nds category-img toggle-image set1" src="./stu.png" />
+              <img class="nds category-img toggle-image set2" src="./eu.png" />
+              <img class="nds category-img toggle-image set3" src="./au.png" />
+              <span id="differenceU_3"></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="resources col-md-6">
+          <div class="glits">
+            <img src="./gl.png" />
+            <label for="input13_1"></label>
+            <input inputmode="numeric" class="form-control input-sm" type="text" id="input441" placeholder="Bind" max="100" />
+            <label for="input23_1"></label>
+            <input inputmode="numeric" class="form-control input-sm" type="text" id="input442" placeholder="Tradable" max="100" />
+          </div>
+          <div class="copper">
+            <img src="./css.png" />
+            <label for="input13_1"></label>
+            <input inputmode="numeric" class="form-control input-sm" type="text" id="input443" placeholder="Copper" max="100" />
+            <label for="input23_1"></label>
+            <input inputmode="numeric" class="form-control input-sm" type="text" id="input444" placeholder="Old Silver" max="100"
+              />
+          </div>
+          <div class="dsteel">
+            <img src="./ds.png" />
+            <label for="input13_1"></label>
+            <input inputmode="numeric" class="form-control input-sm" type="text" id="input445" placeholder="Amount of Darksteel" max="100"
+               />
+          </div>
+        </div>
+        <div class="resources-result col-md-6">
+          <div id="result"><p>Glitterings Needed:</p></div>
+          <div id="result1"><p>Copper Needed:</p></div>
+          <div id="result2"><p>Darksteel Needed:</p></div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="Totals container-fluid col-lg-6">
+      <div class="lsum col-sm-4">
+        <p>Total: <span id="sumL_1"></span></p>
+        <p>Total: <span id="sumL_2"></span></p>
+        <p>Total: <span id="sumL_3"></span></p>
+      </div>
+      <div class="esum col-sm-4">
+        <p>Total: <span id="sumE_1"></span></p>
+        <p>Total: <span id="sumE_2"></span></p>
+        <p>Total: <span id="sumE_3"></span></p>
+      </div>
+        <div class="rsum col-sm-4">
+          <p>Total: <span id="sumR_1"></span></p>
+          <p>Total: <span id="sumR_2"></span></p>
+          <p>Total: <span id="sumR_3"></span></p>
+        </div>
+        <div class="usum col-sm-4">
+          <p>Total: <span id="sumU_1"></span></p>
+          <p>Total: <span id="sumU_2"></span></p>
+          <p>Total: <span id="sumU_3"></span></p>
+        </div>
+      </div>
+      <br>
+    </div> -->
+    <div class="fbtn">
+      <!-- Your HTML dropdowns -->
+
+      <!-- Button to trigger the calculation -->
+
+      <!-- <button type="button" class="btn btn-success" onclick="calculateMats()">
+        Calculate Materials
+      </button> -->
+      <button type="button" class="btn btn-success" onclick="calculateAll()">
+        Calculate Resources
+      </button>
+      <button type="button" class="btn btn-dark" onclick="resetInputs()">
+        Reset All Inputs
+      </button>
+    </div>
+    
+    
+    
+  </main>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.min.js"></script>
+  <script src="index.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+  <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+    data-id="zcelmacaslh" data-description="Support me on Buy me a coffee!"
+    data-message="Support me by buying me some coffee! Donate in the other links to support this website!"
+    data-color="#FF5F5F" data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+</body>
+
+</html>
