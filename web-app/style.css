@@ -150,3 +150,7 @@ svg {
 #toggleds {
   display: none;
 }
+
+.tut {
+  border-style: dashed;
+}
