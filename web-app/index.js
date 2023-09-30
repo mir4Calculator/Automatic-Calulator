@@ -3,7 +3,6 @@ const standardValuesLoop2 = [300, 100, 100];
 const standardValuesLoop3 = [3000, 1000, 1000];
 const standardValuesLoop4 = [30000, 10000, 10000];
 
-
 let a, b, c; // Define global variables a, b, and c
 
 document.addEventListener(
@@ -114,23 +113,43 @@ function calculateAll() {
     const sumU = input11Value + input21Value;
     const divisionResultU = Math.floor(sumU / 10);
 
-    a += (divisionResultEP * 125) + (divisionResultR * 25) + (divisionResultU * 2);
-    b += (divisionResultEP * 100000) + (divisionResultR * 20000) + (divisionResultU * 2000);
-    c += (divisionResultEP * 25000) + (divisionResultR * 5000) + (divisionResultU * 1000);
+    a +=
+      divisionResultLE * 125 +
+      divisionResultEP * 125 +
+      divisionResultR * 25 +
+      divisionResultU * 2;
+    b +=
+      divisionResultLE * 100000 +
+      divisionResultEP * 100000 +
+      divisionResultR * 20000 +
+      divisionResultU * 2000;
+    c +=
+      divisionResultLE * 25000 +
+      divisionResultEP * 25000 +
+      divisionResultR * 5000 +
+      divisionResultU * 1000;
 
-    document.getElementById(`divisionResultL_${i}`).textContent = divisionResultLE + divisionResultEP;
-    document.getElementById(`differenceL_${i}`).textContent = Math.abs(standardValuesLoop1[i - 1] - sumLE) - divisionResultEP;
-    
-    document.getElementById(`divisionResultE_${i}`).textContent = divisionResultEP;
-    document.getElementById(`differenceE_${i}`).textContent = Math.abs(standardValuesLoop2[i - 1] - sumEP) - divisionResultR;
+    document.getElementById(`divisionResultL_${i}`).textContent =
+      divisionResultLE + divisionResultEP;
+    document.getElementById(`differenceL_${i}`).textContent =
+      Math.abs(standardValuesLoop1[i - 1] - sumLE) - divisionResultEP;
 
-    document.getElementById(`divisionResultR_${i}`).textContent = divisionResultR;
-    document.getElementById(`differenceR_${i}`).textContent = Math.abs(standardValuesLoop3[i - 1] - sumR) - divisionResultU;
+    document.getElementById(`divisionResultE_${i}`).textContent =
+      divisionResultEP;
+    document.getElementById(`differenceE_${i}`).textContent =
+      Math.abs(standardValuesLoop2[i - 1] - sumEP) - divisionResultR;
 
-    document.getElementById(`divisionResultU_${i}`).textContent = divisionResultU;
-    document.getElementById(`differenceU_${i}`).textContent = Math.abs(standardValuesLoop4[i - 1] - sumU);
+    document.getElementById(`divisionResultR_${i}`).textContent =
+      divisionResultR;
+    document.getElementById(`differenceR_${i}`).textContent =
+      Math.abs(standardValuesLoop3[i - 1] - sumR) - divisionResultU;
+
+    document.getElementById(`divisionResultU_${i}`).textContent =
+      divisionResultU;
+    document.getElementById(`differenceU_${i}`).textContent = Math.abs(
+      standardValuesLoop4[i - 1] - sumU
+    );
   }
-
 
   for (let g = 1; g <= 3; g++) {
     var inputValue1 = parseFloat(document.getElementById("input441").value);
@@ -149,7 +168,7 @@ function calculateAll() {
       standardValue = 62500;
     }
 
-    var totalInputs1 =  standardValue - a;
+    var totalInputs1 = standardValue - a;
 
     var result = Math.abs(totalInputs1 - totalValue); // Subtract 'a' from the result
 
@@ -205,12 +224,6 @@ function calculateAll() {
   }
 }
 
-
-  
-
-
-
-
 function resetInputs() {
   // Reset inputs for sets 1 to 6
   for (let i = 1; i <= 6; i++) {
@@ -236,7 +249,6 @@ function resetInputs() {
   }
 }
 
-
 //dropdown images animation
 function toggleImages() {
   const dropdown = document.getElementById("imageToggleDropdown");
@@ -257,4 +269,3 @@ function toggleImages() {
 
 // Update the images based on the initial value of the dropdown
 toggleImages();
-
